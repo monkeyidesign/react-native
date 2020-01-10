@@ -12,6 +12,10 @@ import {View, Text, TextInput, Button} from 'react-native';
 class App extends React.Component {
   state = {
     msg: 'State message will be replaced by setState',
+    changeMsg: '',
+  };
+  onChangeMsg = () => {
+    this.setState({changeMsg: this.state.msg});
   };
   render() {
     return (
@@ -21,8 +25,9 @@ class App extends React.Component {
           style={myStyle.inputStyle}
           onChangeText={text => this.setState({msg: text})}
         />
-        <Button title="Send" color="blue" />
-        <Text>{this.state.msg}</Text>
+        <Button title="Send" color="blue" onPress={this.onChangeMsg} />
+        <Text>{this.state.changeMsg}</Text>
+        <Text>MSG: {this.state.msg}</Text>
       </View>
     );
   }
