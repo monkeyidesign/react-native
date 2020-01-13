@@ -22,7 +22,7 @@ class App extends React.Component {
     //Add a new item to an array:
     arr.push(newChangeMsg);
 
-    this.setState({changeMsg: arr});
+    this.setState({changeMsg: arr, msgValue: ''});
   };
   renderNewMsgArrayValue = () => {
     //creates a new array using map()
