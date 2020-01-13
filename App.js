@@ -12,10 +12,17 @@ import {View, Text, TextInput, Button} from 'react-native';
 class App extends React.Component {
   state = {
     msgValue: '',
-    changeMsg: ['React Native', 'Flutter', 'Vue'],
+    changeMsg: [],
   };
   onChangeMsg = () => {
-    this.setState({changeMsg: this.state.msgValue});
+    //this.setState({changeMsg: this.state.msgValue});
+    var newChangeMsg = this.state.msgValue;
+    var arr = this.state.changeMsg;
+
+    //Add a new item to an array:
+    arr.push(newChangeMsg);
+
+    this.setState({changeMsg: arr});
   };
   renderNewMsgArrayValue = () => {
     //creates a new array using map()
