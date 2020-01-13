@@ -11,11 +11,17 @@ import {View, Text, TextInput, Button} from 'react-native';
 
 class App extends React.Component {
   state = {
-    msg: 'State message will be replaced by setState',
-    changeMsg: '',
+    msgValue: '',
+    changeMsg: ['React Native', 'Flutter', 'Vue'],
   };
   onChangeMsg = () => {
-    this.setState({changeMsg: this.state.msg});
+    this.setState({changeMsg: this.state.msgValue});
+  };
+  renderNewMsgArrayValue = () => {
+    //creates a new array using map()
+    return this.state.changeMsg.map(k => {
+      return <Text key={k}>{k}</Text>;
+    });
   };
   render() {
     return (
@@ -23,11 +29,12 @@ class App extends React.Component {
         <Text>Hello MONKEYiDESIGN apps</Text>
         <TextInput
           style={myStyle.inputStyle}
-          onChangeText={text => this.setState({msg: text})}
+          onChangeText={text => this.setState({msgValue: text})}
+          value={this.state.msgValue}
         />
         <Button title="Send" color="blue" onPress={this.onChangeMsg} />
-        <Text>{this.state.changeMsg}</Text>
-        <Text>MSG: {this.state.msg}</Text>
+        {this.renderNewMsgArrayValue()}
+        {/*<Text>MSG: {this.state.msgValue}</Text>*/}
       </View>
     );
   }
