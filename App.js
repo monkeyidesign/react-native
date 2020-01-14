@@ -24,12 +24,32 @@ class App extends React.Component {
 
     this.setState({changeMsg: arr, msgValue: ''});
   };
+  removeItemArray = (k) => {
+    var arr = this.state.changeMsg;
+
+    //searching array index
+    var arrIndex = arr.indexOf(k);
+
+    //remove an item by using javascript function splice()
+    arr.splice(arrIndex, 1);
+
+    this.setState({changeMsg: arr});
+  };
   renderNewMsgArrayValue = () => {
     //creates a new array using map()
     return this.state.changeMsg.map(k => {
-      return <Text key={k}>{k}</Text>;
+      return (
+        <Text
+          key={k}
+          onPress={() => {
+            this.removeItemArray(k);
+          }}>
+          {k}
+        </Text>
+      );
     });
   };
+
   render() {
     return (
       <View style={myStyle.container}>
