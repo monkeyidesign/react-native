@@ -24,7 +24,7 @@ class App extends React.Component {
 
     this.setState({changeMsg: arr, msgValue: ''});
   };
-  removeItemArray = (k) => {
+  removeItemArray = k => {
     var arr = this.state.changeMsg;
 
     //searching array index
@@ -53,12 +53,16 @@ class App extends React.Component {
   render() {
     return (
       <View style={myStyle.container}>
-        <Text>Hello MONKEYiDESIGN apps</Text>
-        <TextInput
-          style={myStyle.inputStyle}
-          onChangeText={text => this.setState({msgValue: text})}
-          value={this.state.msgValue}
-        />
+        <View style={myStyle.MonkeyStyle}>
+          <Text>Hello MONKEYiDESIGN apps</Text>
+        </View>
+        <View style={myStyle.MonkeyStyleInput}>
+          <TextInput
+            style={myStyle.inputStyle}
+            onChangeText={text => this.setState({msgValue: text})}
+            value={this.state.msgValue}
+          />
+        </View>
         <Button title="Send" color="blue" onPress={this.onChangeMsg} />
         {this.renderNewMsgArrayValue()}
         {/*<Text>MSG: {this.state.msgValue}</Text>*/}
@@ -72,11 +76,20 @@ const myStyle = {
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
+    paddingRight: 16,
+    paddingLeft: 16,
   },
   inputStyle: {
     height: 40,
     borderColor: 'blue',
     borderWidth: 1,
+
+  },
+  MonkeyStyle: {
+    marginBottom: 16,
+  },
+  MonkeyStyleInput: {
+    alignSelf: 'stretch',
   },
 };
 export default App;
