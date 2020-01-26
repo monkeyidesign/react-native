@@ -8,8 +8,7 @@
 import React, {Component} from 'react';
 import {SafeAreaView, StyleSheet, View} from 'react-native';
 import Header from './src/components/Header';
-import {Button} from './src/components/form/Button';
-import {Input} from './src/components/form/Input';
+import ListData from './src/components/api-request/ListData';
 
 export default class App extends Component {
   state = {
@@ -20,32 +19,10 @@ export default class App extends Component {
     return (
       <SafeAreaView style={styles.page}>
         <View style={styles.header}>
-          <Header>Home Screen</Header>
+          <Header>HTTP REQUEST</Header>
         </View>
         <View style={styles.container}>
-          <Input placeholder="Input your name" label="Fullname" />
-        </View>
-        <View style={styles.container}>
-          <Input
-            placeholder="Input your email"
-            label="Email"
-            onChangeText={email => this.setState({email})}
-            value={this.state.email}
-          />
-        </View>
-        <View style={styles.container}>
-          <Input
-            placeholder="Input your password"
-            label="Password"
-            secureTextEntry
-          />
-        </View>
-        <View style={styles.container}>
-          <View style={styles.button2_bg}>
-            <Button onPress={() => alert('test')} bgcolor="#40c4ff">
-              Login
-            </Button>
-          </View>
+          <ListData/>
         </View>
       </SafeAreaView>
     );
@@ -65,11 +42,5 @@ const styles = StyleSheet.create({
     paddingLeft: 16,
     paddingRight: 16,
     paddingBottom: 16,
-  },
-  button2_bg: {
-    flex: 1,
-    flexDirection: 'row',
-    alignItems: 'center',
-    marginTop: 32
   },
 });
