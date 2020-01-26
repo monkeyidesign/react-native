@@ -5,91 +5,28 @@
  * @format
  * @flow
  */
+import React, {Component} from 'react';
+import {StyleSheet, View,} from 'react-native';
+import Header from './src/components/Header';
 
-import React from 'react';
-import {View, Text, TextInput, Button} from 'react-native';
-
-class App extends React.Component {
-  state = {
-    msgValue: '',
-    changeMsg: [],
-  };
-  onChangeMsg = () => {
-    //this.setState({changeMsg: this.state.msgValue});
-    var newChangeMsg = this.state.msgValue;
-    var arr = this.state.changeMsg;
-
-    //Add a new item to an array:
-    arr.push(newChangeMsg);
-
-    this.setState({changeMsg: arr, msgValue: ''});
-  };
-  removeItemArray = k => {
-    var arr = this.state.changeMsg;
-
-    //searching array index
-    var arrIndex = arr.indexOf(k);
-
-    //remove an item by using javascript function splice()
-    arr.splice(arrIndex, 1);
-
-    this.setState({changeMsg: arr});
-  };
-  renderNewMsgArrayValue = () => {
-    //creates a new array using map()
-    return this.state.changeMsg.map(k => {
-      return (
-        <Text
-          key={k}
-          onPress={() => {
-            this.removeItemArray(k);
-          }}>
-          {k}
-        </Text>
-      );
-    });
-  };
-
+export default class App extends Component {
   render() {
     return (
-      <View style={myStyle.container}>
-        <View style={myStyle.MonkeyStyle}>
-          <Text>Hello MONKEYiDESIGN apps</Text>
+      <View style={styles.page}>
+        <View style={styles.header}>
+          <Header>Home Screen</Header>
         </View>
-        <View style={myStyle.MonkeyStyleInput}>
-          <TextInput
-            style={myStyle.inputStyle}
-            onChangeText={text => this.setState({msgValue: text})}
-            value={this.state.msgValue}
-          />
-        </View>
-        <Button title="Send" color="blue" onPress={this.onChangeMsg} />
-        {this.renderNewMsgArrayValue()}
-        {/*<Text>MSG: {this.state.msgValue}</Text>*/}
       </View>
     );
   }
 }
 
-const myStyle = {
-  container: {
+const styles = StyleSheet.create({
+  page: {
+    backgroundColor: '#fff',
     flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-    paddingRight: 16,
-    paddingLeft: 16,
   },
-  inputStyle: {
-    height: 40,
-    borderColor: 'blue',
-    borderWidth: 1,
-
-  },
-  MonkeyStyle: {
-    marginBottom: 16,
-  },
-  MonkeyStyleInput: {
-    alignSelf: 'stretch',
-  },
-};
-export default App;
+  header: {
+    backgroundColor: '#8bc34a',
+  }
+});
