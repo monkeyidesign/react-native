@@ -41,8 +41,10 @@ export default class App extends Component {
           />
         </View>
         <View style={styles.container}>
-          <View style={styles.button1_bg}>
-            <Button onPress={() => alert('test')}>Login</Button>
+          <View style={styles.button2_bg}>
+            <Button onPress={() => alert('test')} bgcolor="#40c4ff">
+              Login
+            </Button>
           </View>
         </View>
       </SafeAreaView>
@@ -64,11 +66,10 @@ const styles = StyleSheet.create({
     paddingRight: 16,
     paddingBottom: 16,
   },
-  button1_bg: {
-    backgroundColor: '#40c4ff',
-    borderRadius: 10,
-    borderWidth: 1,
-    borderColor: '#fff',
-    alignItems: 'center'
+  button2_bg: {
+    flex: 1,
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginTop: 32
   },
 });
